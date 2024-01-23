@@ -1,8 +1,10 @@
 package Account;
 
+import java.util.ArrayList;
+
 public class Bank {
 
-    Account[] accarray;
+    ArrayList<Account> accArray = new ArrayList<>();
     int index = 0;
     double interestAvg;
     int cnt;
@@ -10,20 +12,20 @@ public class Bank {
     public Bank() {
     }
 
-    public Bank(int num){
-        accarray = new Account[num];
-    }
+    // public Bank(int num){
+    //     accArray = new Account[num];
+    // }
 
     public void createAccount(Account account){
-        accarray[index++] = account;
+        accArray.add(account);
     }
 
     public void deleteAccount(Account account){
-        accarray[index--] = null;
+        accArray.remove(account);
     }
 
     public void addinterestAll(){
-        for(Account account : accarray){
+        for(Account account : accArray){
             if(account instanceof SavingAccount && !(account instanceof StudentAccount)){   // Saving만 이자 주고 Student는 만기 시에만 이자 줌
                 ((SavingAccount)account).addinterest();
             }
@@ -31,7 +33,7 @@ public class Bank {
     }
 
     public double interestAvgCal(){
-        for(Account account : accarray){
+        for(Account account : accArray){
             if(account instanceof SavingAccount && !(account instanceof StudentAccount)){   // Saving만 이자 주고 Student는 만기 시에만 이자 줌
                 interestAvg += ((SavingAccount) account).getInterest();
                 cnt++;
@@ -42,8 +44,8 @@ public class Bank {
     }
 
     public void print(){
-        for (int i = 0; i < index; i++) {
-            accarray[i].print();
-        }
+       
+            System.out.println(accArray.toString());
+        
     }
 }

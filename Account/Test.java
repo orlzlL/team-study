@@ -15,7 +15,7 @@ public class Test {
         StudentAccount studentAccount = new StudentAccount(2, 3.5, now);
         studentAccount.deposit(50000);
 
-        Bank bank = new Bank(5);
+        Bank bank = new Bank();
         bank.createAccount(savingAccount);
         bank.createAccount(checkingAccount);
         bank.createAccount(studentAccount);
@@ -36,6 +36,10 @@ public class Test {
         System.out.println("===학생적금깨기 (적금 만기시 이자 지급됨)===");
         double avg = bank.interestAvgCal();
         studentAccount.studentWithdraw(15000, allowWithdrawDate, avg);
+
+        System.out.println("===Acc1 삭제===");
+        bank.deleteAccount(checkingAccount);
+        bank.print();
 
 
     }
